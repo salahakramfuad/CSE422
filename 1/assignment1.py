@@ -17,12 +17,6 @@ for i in inputFile:
     sub_adj_graph={}
 
 
-
-
-
-
-
-
 def astar(initialNode, finalNode, adj_graph, heuristic):
   queue = [(0, initialNode)]  #Queue
   parent = {}
@@ -77,7 +71,7 @@ initialNode = input("Enter the initialNode node: ")
 finalNode = input("Enter the finalNode node: ")
 
 if initialNode and finalNode not in heuristic:
-    print("initialNode or finalNode does not exist. Or, there might be a name error.")
+    print("Enter the names correctly or Name does not exist")
 else:
     parent, cost = astar(initialNode, finalNode, adj_graph, heuristic)
 
