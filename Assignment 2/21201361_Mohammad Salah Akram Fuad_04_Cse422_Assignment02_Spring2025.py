@@ -103,3 +103,47 @@ print("Best Strategy:", best_strategy)
 final_capital=trading(best_strategy,historical_prices)
 
 print('Profit: ',final_capital-1000)
+
+
+
+
+
+# Part 2
+
+
+
+
+initial_population = [
+    {"stop_loss": 2, "take_profit": 5, "trade_size": 20},
+    {"stop_loss": 3, "take_profit": 7, "trade_size": 30},
+    {"stop_loss": 1.5, "take_profit": 4, "trade_size": 25},
+    {"stop_loss": 2.5, "take_profit": 6, "trade_size": 15}
+]
+
+def two_point_crossover(parent1, parent2):
+    keys = list(parent1.keys())
+    point1, point2 = sorted(random.sample(range(len(keys) + 1), 2))
+
+    child1 = {}
+    child2 = {}
+
+    for i in range(len(keys)):
+        key = keys[i]
+        if i < point1 or i >= point2:
+            child1[key] = parent1[key]
+            child2[key] = parent2[key]
+        else:
+            child1[key] = parent2[key]
+            child2[key] = parent1[key]
+
+    return child1, child2
+
+
+parent1, parent2 = random.sample(initial_population, 2)
+child1, child2 = two_point_crossover(parent1, parent2)
+
+
+print("Parent 1:", parent1)
+print("Parent 2:", parent2)
+print("Child 1:", child1)
+print("Child 2:", child2)
