@@ -89,7 +89,7 @@ def generate_new_population(population, historical_prices, generations=10):
     best_chromosome = evolve(population, historical_prices)[0][1]
     return best_chromosome
 
-# Main Program
+# problem_1 Program
 historical_prices = [-1.2, 3.4, -0.8, 2.1, -2.5, 1.7, -0.3, 5.8, -1.1, 3.5]
 initial_population = [
     {"stop_loss": 2, "take_profit": 5, "trade_size": 20},
