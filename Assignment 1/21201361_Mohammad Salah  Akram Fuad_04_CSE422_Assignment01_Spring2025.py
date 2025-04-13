@@ -9,9 +9,9 @@ for i in inputFile:
     each_line = i.strip().split()
     heuristic[each_line[0]] = int(each_line[1])
     length_of_a_line = len(each_line)
-    for index in range(2, length_of_a_line, 2):
+    for i in range(2, length_of_a_line, 2):
 
-        sub_adj_graph[each_line[index]] = int(each_line[index+1])
+        sub_adj_graph[each_line[i]] = int(each_line[i+1])
 
     adj_graph[each_line[0]] = sub_adj_graph
     sub_adj_graph={}
@@ -31,13 +31,13 @@ def astar(initialNode, finalNode, adj_graph, heuristic):
     if current == finalNode:
       break
 
-    for child in adj_graph[current]:
-      new_cost = cost[current] + adj_graph[current][child] #g(n)
-      if child not in cost or new_cost < cost[child]:
-        cost[child] = new_cost
-        priority = new_cost + heuristic[child] #f(n)=g(n)+h(n)
-        queue.append((priority, child))
-        parent[child] = current
+    for i in adj_graph[current]:
+      new_cost = cost[current] + adj_graph[current][i] #g(n)
+      if i not in cost or new_cost < cost[i]:
+        cost[i] = new_cost
+        priority = new_cost + heuristic[i] #f(n)=g(n)+h(n)
+        queue.append((priority, i))
+        parent[i] = current
 
   return parent, cost
 
